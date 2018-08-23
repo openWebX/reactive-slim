@@ -1,5 +1,5 @@
 {
-    "name": "nigelgreenway/reactive-slim",
+    "name": "openwebx/reactive-slim",
     "description": "A bridge to use SlimPHP within ReactPHP",
     "type": "library",
     "keywords": [
