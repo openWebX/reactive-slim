@@ -25,7 +25,9 @@ class ServerSpec extends ObjectBehavior
 
     function it_should_except_a_host_string_and_return_itself()
     {
-        $this->setHost('0.0.0.0')->shouldBeAnInstanceOf(Server::class);
+        $this
+            ->setHost('0.0.0.0')
+            ->shouldBeAnInstanceOf(Server::class);
     }
 
     function it_should_except_a_port_number_and_return_itself()

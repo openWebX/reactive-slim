@@ -107,9 +107,9 @@ final class Server
     }
 
     /** @return void */
-    public function run()
+    public function run(LoopInterface $loop = null)
     {
-        $this->initialiseReactPHP();
+        $this->initialiseReactPHP($loop);
 
         $this->server->on('request', function (ReactRequest $request, ReactResponse $response) {
 
@@ -185,9 +185,11 @@ final class Server
      * Initialise ReactPHP setup
      * @return void
      */
-    private function initialiseReactPHP()
+    private function initialiseReactPHP(LoopInterface $loop = null)
     {
-        $loop         = EventLoop::create();
+        if (!$loop) {
+            $loop = EventLoop::create();
+        }
         $socketServer = new SocketServer(
             sprintf('%s:%d', $this->host, $this->port),
             $loop
